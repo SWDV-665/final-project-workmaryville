@@ -1,17 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alert</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <script>node_modules/sweetalert2/dist/sweetalert2.js</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+    <style>
+      :root {
+        --ion-safe-area-top: 20px;
+        --ion-safe-area-bottom: 22px;
+      }
+
+      header {
+        height: 10em;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      section {
+        margin-top: 0em;
+        margin-bottom: 0em;
+      }
+
+      section:not(.full-width),
+      .full-width > header {
+        padding: 100 5px;
+      }
+      
+    </style>
+  </head>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Self-Affirmation
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Positive Affirmation</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
+<section class="full-width">
+  <!----header>Full Width</header-->
+  <ion-button expand="full" color="secondary" (click)="showAlert()">Self-Affirmation</ion-button>
+</section>
+
+<ion-list>
+  <ion-item button *ngFor="let item of loadItems(); let i = index" (click)="openModal()"> 
+    <ion-label>
+      <h2>{{item.name}}</h2>
+      <p ion-icon="phone"> {{item.Phone_number}}</p>
+      <p>{{item.Address}}</p>
+      <p>{{item.Email}}</p>
+    </ion-label>
+
+  </ion-item>
+
+</ion-list>
+
+<ion-fab vertical="center" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="share_emotion()">
+    <ion-icon name="share"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+ 
+  </ion-content>
+
