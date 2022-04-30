@@ -1,0 +1,43 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Friend Notes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">close</ion-button>
+      <ion-button (click)="saveModal()">save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Friendly Reminders</ion-label>
+    <ion-textarea [(ngModel)]="inputVal"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>Notes</ion-label>
+    <ion-textarea rows="6" cols="20" placeholder="Enter any notes about your friend here..."[(ngModel)]="inputVal"></ion-textarea>
+    <button ion-button large full color="dark" (click)="saveModal()">Refresh</button>
+  </ion-item>
+</ion-content>
+
+<ion-content>
+This person is:
+
+<ion-radio-group>
+  <ion-item>
+    <ion-label>Best Friend</ion-label>
+    <ion-radio value="i"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Colleague</ion-label>
+    <ion-radio value="b"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Aquaintance</ion-label>
+    <ion-radio value="c"></ion-radio>
+  </ion-item>
+</ion-radio-group>
+
+
+
+</ion-content>

@@ -1,0 +1,40 @@
+import { Injectable } from '@angular/core';
+
+//import { analyzeAndValidateNgModules } from '@angular/compiler';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ContactserviceService {
+
+  items = [
+    {
+      name: 'Spencer Work' ,
+      Phone_number: '682-308-8547' ,
+      Address: '123 cool Ave' ,
+      Email: 'swork5002@gmail.com'
+    }
+
+
+
+  ];
+
+constructor() { }
+
+getItems(){
+  return this.items;
+}
+
+removeItem(index){
+  this.items.splice(index, 1)
+}
+
+addItem(item){
+  this.items.push(item);
+}
+
+editItem(item, index){
+  this.items[index] = item
+}
+
+}

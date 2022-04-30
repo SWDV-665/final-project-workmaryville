@@ -1,7 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <style>
+      :root {
+        --ion-safe-area-top: 20px;
+        --ion-safe-area-bottom: 22px;
+      }
+
+      header {
+        height: 10em;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      section {
+        margin-top: 0em;
+        margin-bottom: 0em;
+      }
+
+      section:not(.full-width),
+      .full-width > header {
+        padding: 100 5px;
+      }
+
+    </style>
+  </head>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      {{title}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +44,47 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large" style="text-align: center;" >Contacts</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <section class="full-width">
+    <!----header>Full Width</header-->
+    <ion-button expand="full" color="secondary" (click)="addItem()">Add Contact</ion-button>
+  </section>
+  <section class="full-width">
+    <!----header>Full Width</header-->
+    <ion-button expand="full" color="secondary">Load Contacts</ion-button>
+  </section>
+
+    <header *ngIf="loadItems().length === 0">
+      <h3>No people found in list. Please add people. </h3>
+    </header>
+
+    <ion-list>
+      
+        <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
+          <ion-item>
+            <ion-item-option color="primary">
+              <button (click)="editItem(item, i)" ion-button color="primary" icon-start></button>
+            <h2 style="text-align: center;">{{item.name}}</h2>
+            </ion-item-option>
+          </ion-item>
+          <ion-iten>
+            <h2 style="text-align: center;">{{item.Phone_number}}</h2>
+          </ion-iten>
+          <ion-item-options slide='end'>
+            <button (click)="editItem(item, i)" ion-button color="primary" icon-start>
+              <ion-icon name="pencil"></ion-icon>
+              Edit
+            </button>
+
+            <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
+              <ion-icon name="trash"></ion-icon>
+              Delete
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+  </ion-list>   
+  
 </ion-content>
